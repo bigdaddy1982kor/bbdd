@@ -11,19 +11,25 @@ body {
     text-align: center;
 }
 
-#timer1, #timer2, #timer3, #timer4 {
-    margin: 20px;
+/* 새로 추가한 부분: 디데이 블록 전체 감싸는 부모 */
+#timer-container {
+    display: flex;
+    justify-content: center; /* 가운데 정렬 */
+    gap: 20px; /* 블록 사이 간격 */
+    margin-top: 50px;
 }
 
-.days {
-    display: inline-block;
+.timer {
+    background: #EF2F3C;
     padding: 40px;
     width: 200px;
-    background: #EF2F3C;
     border-radius: 10px;
     color: white;
     font-family: 'Lato', sans-serif;
     font-size: 1.2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .numbers {
@@ -34,41 +40,34 @@ body {
     </style>
 </head>
 <body>
-    
-<div id="timer1">
-    <div class="days"><div id="days1" class="numbers"></div>days</div>
-</div>
-<div id="timer2">
-    <div class="days"><div id="days2" class="numbers"></div>days</div>
-</div>
-<div id="timer3">
-    <div class="days"><div id="days3" class="numbers"></div>days</div>
-</div>
-<div id="timer4">
-    <div class="days"><div id="days4" class="numbers"></div>days</div>
+
+<div id="timer-container">  <!-- 여기! 부모 flex 박스 -->
+    <div id="timer1" class="timer">
+        <div id="days1" class="numbers"></div>
+        days
+    </div>
+    <div id="timer2" class="timer">
+        <div id="days2" class="numbers"></div>
+        days
+    </div>
+    <div id="timer3" class="timer">
+        <div id="days3" class="numbers"></div>
+        days
+    </div>
+    <div id="timer4" class="timer">
+        <div id="days4" class="numbers"></div>
+        days
+    </div>
 </div>
 
 <script>
 const countdowns = [
-  {
-    date: new Date('Oct 25, 2025 00:00:00'),
-    daysId: "days1"
-  },
-  {
-    date: new Date('Dec 31, 2025 23:59:59'),
-    daysId: "days2"
-  },
-  {
-    date: new Date('Aug 15, 2025 00:00:00'),
-    daysId: "days3"
-  },
-  {
-    date: new Date('May 5, 2025 00:00:00'),
-    daysId: "days4"
-  }
+  { date: new Date('Oct 25, 2025 00:00:00'), daysId: "days1" },
+  { date: new Date('Dec 31, 2025 23:59:59'), daysId: "days2" },
+  { date: new Date('Aug 15, 2025 00:00:00'), daysId: "days3" },
+  { date: new Date('May 5, 2025 00:00:00'), daysId: "days4" }
 ];
 
-// countdown
 let timer = setInterval(function() {
   const now = new Date().getTime();
 
