@@ -5,22 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:900">
     <title>Document</title>
-    <style>
+<style>
 body {
     background-color: white;
     text-align: center;
 }
 
-/* 새로 추가한 부분: 디데이 블록 전체 감싸는 부모 */
 #timer-container {
     display: flex;
-    justify-content: center; /* 가운데 정렬 */
-    gap: 20px; /* 블록 사이 간격 */
+    justify-content: center;
+    gap: 20px;
     margin-top: 50px;
 }
 
 .timer {
-    background: #EF2F3C;
     padding: 40px;
     width: 200px;
     border-radius: 10px;
@@ -32,12 +30,27 @@ body {
     align-items: center;
 }
 
+/* 블록별 색깔 따로 설정 */
+#timer1 {
+    background: #EF2F3C; /* 빨강 */
+}
+#timer2 {
+    background: #276FBF; /* 파랑 */
+}
+#timer3 {
+    background: #F0A202; /* 주황 */
+}
+#timer4 {
+    background: #44BBA4; /* 연녹 */
+}
+
 .numbers {
     font-family: 'Montserrat', sans-serif;
-    font-size: 5em;
+    font-size: 6em; /* 숫자 크게 */
     margin-bottom: 10px;
 }
-    </style>
+</style>
+
 </head>
 <body>
 
