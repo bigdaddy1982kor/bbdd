@@ -6,123 +6,80 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:900">
     <title>Document</title>
     <style>
-
-body{
+body {
     background-color: white;
-}
-  
-#timer {
-  color: #eeeeee;
-  text-align: center;
-  text-transform: uppercase;
-  font-family: 'Lato', sans-serif;
-  font-size: .7em;
-  letter-spacing: 5px;
+    text-align: center;
 }
 
-.days, .hours, .minutes, .seconds {
-  display: inline-block;
-  padding: 20px;
-  width: 140px;
-  border-radius: 5px;
+#timer1, #timer2, #timer3, #timer4 {
+    margin: 20px;
 }
 
 .days {
-  background: #EF2F3C;
-}
-
-.hours {
-  background: #eeeeee;
-  color: #183059;
-}
-
-.minutes {
-  background: #276FBF;
-}
-
-.seconds {
-  background: #F0A202;
+    display: inline-block;
+    padding: 40px;
+    width: 200px;
+    background: #EF2F3C;
+    border-radius: 10px;
+    color: white;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.2em;
 }
 
 .numbers {
-  font-family: 'Montserrat', sans-serif;
-  color:  #183059;
-  font-size: 4em;
-  text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 5em;
+    margin-bottom: 10px;
 }
-
-.white {
-  position: absolute;
-  background:  #eeeeee;
-  height: 85px;
-  width: 75px;
-  left: 30%;
-  top: 2%;
-}
-
-.red {
-  position: absolute;
-  background:  #EF2F3C;
-  left: 18%;
-  top: 9%;
-  height: 65px;
-  width: 140px;
- 
-}
-
-.blue {
-  position: absolute;
-  background:  #276FBF;
-  height: 80px;
-  width: 80px;
-  left: 60%;
-  top: 5%;
-
-
-}
-
-
     </style>
 </head>
 <body>
     
-<div id="timer">
-
-    <div class="days"> 
-        <div id="days" class="numbers "> </div>days</div> 
-      
-
+<div id="timer1">
+    <div class="days"><div id="days1" class="numbers"></div>days</div>
+</div>
+<div id="timer2">
+    <div class="days"><div id="days2" class="numbers"></div>days</div>
+</div>
+<div id="timer3">
+    <div class="days"><div id="days3" class="numbers"></div>days</div>
+</div>
+<div id="timer4">
+    <div class="days"><div id="days4" class="numbers"></div>days</div>
 </div>
 
-</body>
 <script>
-    const year = new Date().getFullYear();
-const myDate = new Date('Oct 25, 2020 00:00:00');
-console.log(myDate);
+const countdowns = [
+  {
+    date: new Date('Oct 25, 2025 00:00:00'),
+    daysId: "days1"
+  },
+  {
+    date: new Date('Dec 31, 2025 23:59:59'),
+    daysId: "days2"
+  },
+  {
+    date: new Date('Aug 15, 2025 00:00:00'),
+    daysId: "days3"
+  },
+  {
+    date: new Date('May 5, 2025 00:00:00'),
+    daysId: "days4"
+  }
+];
 
 // countdown
 let timer = setInterval(function() {
+  const now = new Date().getTime();
 
-  // get today's date
-  const today = new Date().getTime();
+  countdowns.forEach(c => {
+    const diff = c.date - now;
+    let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    document.getElementById(c.daysId).innerHTML = days;
+  });
 
-  // get the difference
-  const diff = myDate - today;
-
-  // math
-  let days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  let seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-  // display
-  document.getElementById("days").innerHTML=days
-  document.getElementById("hours").innerHTML=hours
-  document.getElementById("minutes").innerHTML=minutes
-  document.getElementById("seconds").innerHTML=seconds
-
-
-
-}, 1);
+}, 1000);
 </script>
+
+</body>
 </html>
