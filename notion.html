@@ -64,7 +64,7 @@ body {
 const countdowns = [
   { date: new Date('Nov 25, 2020 00:00:00'), daysId: "days1" },
   { date: new Date('Aug 26, 2021 00:00:00'), daysId: "days2" },
-  { date: new Date('Aug 15, 2025 00:00:00'), daysId: "days3" },
+  { date: new Date('May 27, 2025 00:00:00'), daysId: "days3" },
   { date: new Date('Jul 17, 2025 00:00:00'), daysId: "days4" }
 ];
 
@@ -73,12 +73,18 @@ let timer = setInterval(function() {
 
   countdowns.forEach(c => {
     const diff = c.date - now;
-    let days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    document.getElementById(c.daysId).innerHTML = days;
+    let days = Math.floor(Math.abs(diff) / (1000 * 60 * 60 * 24)); // 일 수는 무조건 양수로
+    
+    if (diff >= 0) {
+      document.getElementById(c.daysId).innerHTML = `-${days}`; // 아직 도래하지 않음 → -붙이기
+    } else {
+      document.getElementById(c.daysId).innerHTML = `+${days}`; // 지난 일정 → +붙이기
+    }
   });
 
 }, 1000);
 </script>
+
 
 </body>
 </html>
