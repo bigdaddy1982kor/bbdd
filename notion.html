@@ -44,28 +44,28 @@ body {
 <div id="timer-container">  <!-- 여기! 부모 flex 박스 -->
     <div id="timer1" class="timer">
         <div id="days1" class="numbers"></div>
-        days
+        국내 OPEN한지
     </div>
     <div id="timer2" class="timer">
         <div id="days2" class="numbers"></div>
-        days
+        Global 오픈한지
     </div>
     <div id="timer3" class="timer">
         <div id="days3" class="numbers"></div>
-        days
+        국내 시즌1 남은일
     </div>
     <div id="timer4" class="timer">
         <div id="days4" class="numbers"></div>
-        days
+        글로벌 시즌1 남은일
     </div>
 </div>
 
 <script>
 const countdowns = [
-  { date: new Date('Oct 25, 2025 00:00:00'), daysId: "days1" },
-  { date: new Date('Dec 31, 2025 23:59:59'), daysId: "days2" },
+  { date: new Date('Nov 25, 2020 00:00:00'), daysId: "days1" },
+  { date: new Date('Aug 26, 2021 00:00:00'), daysId: "days2" },
   { date: new Date('Aug 15, 2025 00:00:00'), daysId: "days3" },
-  { date: new Date('May 5, 2025 00:00:00'), daysId: "days4" }
+  { date: new Date('Jul 17, 2025 00:00:00'), daysId: "days4" }
 ];
 
 let timer = setInterval(function() {
